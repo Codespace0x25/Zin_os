@@ -13,7 +13,7 @@ cmake -S . -B build/
 cmake --build build/
 
 # install
-cmake --install build/
+cmake --install build/ --prefix "~/zin"
 
 # Step 5: Print completion message
 echo "Build process completed.\nBinary File in ~/zin"
