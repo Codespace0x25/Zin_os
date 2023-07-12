@@ -1,7 +1,22 @@
 # Zin_os
-inorder to make you need to install
-'g++, binutils, libc6-dev-i386'
 
-you must make a file in ~/ called zin
-the command is 
-'mkdir ~/zin'
+#### Dependencies
+
+```
+g++ 
+binutils 
+libc6-dev-i386
+```
+
+#### Build
+
+To build
+
+```sh
+chmod a+x builder.sh
+./builder.sh
+```
+
+---
+
+Binary file will be in `~/zin`

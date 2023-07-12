@@ -1,18 +1,19 @@
 #!/bin/bash
 
-# Step 1: Create build directory
-mkdir -p build
-cd build || exit
+# check if cmake is installed
+[ -f /bin/cmake ] || {
+	echo "cmake not found"
+	exit
+}
 
-# Step 2: Generate build files
-cmake ..
+# cmake to generate build files
+cmake -S . -B build/
 
-# Step 3: Build the project
-make
+# build the files
+cmake --build build/
 
-# Step 4: Install the executable
-make install
+# install
+cmake --install build/
 
 # Step 5: Print completion message
-echo "Build process completed."
-
+echo "Build process completed.\nBinary File in ~/zin"
