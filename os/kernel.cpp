@@ -2,7 +2,7 @@
 /// @brief Output a colored text into the screen.
 /// @param text The string to print
 /// @param color The color used (0 to 15)
-extern "C" void putText(unsigned char* text, unsigned short color)
+extern "C" void putText(char* text, unsigned short color)
 {
 	unsigned short* video_mem = (unsigned short*) 0xB8000;
 	color = color << 8;
@@ -15,6 +15,6 @@ extern "C" void putText(unsigned char* text, unsigned short color)
 
 extern "C" void kernelMain(void* multiboot_structure, unsigned int magicnum)
 {
-    putText("hi team");
+    putText("hi team",15);
 	while(1);
 }
