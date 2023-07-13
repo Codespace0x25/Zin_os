@@ -13,7 +13,7 @@ libc6-dev-i386
 To build
 
 ```sh
-chmod a+x builder.sh &&./builder.sh
+chmod a+x builder.sh && ./builder.sh
 ```
 
 ---
