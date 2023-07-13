@@ -12,9 +12,9 @@
 
 .extern main
 .extern callConstructors
-.global loader
+.global start
 
-loader:
+_start:
     mov &kernel_stack, %esp
     
     call callConstructors
