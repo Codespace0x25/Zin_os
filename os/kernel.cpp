@@ -22,7 +22,7 @@ extern "C" void callConstructors(){
 	   (*curr_constructor)();
 }
 
-extern "C" void kernelMain(void* multiboot_structure, unsigned int magicnum)
+extern "C" int main(int magicnum, char** multiboot_structure)
 {
     putText("hi team",15);
 	while(1);
