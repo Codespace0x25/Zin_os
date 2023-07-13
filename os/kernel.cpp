@@ -13,6 +13,15 @@ extern "C" void putText(char* text, unsigned short color)
 		*video_mem++ = color | text[offset];
 }
 
+
+typedef void (*constructor)();
+extern "C" constructor start_ctors;
+extern "C" constructor end_ctors;
+extern "C" void callConstructors(){
+	for(constructor* i =&start_ctors; i != end_ctors; i++)
+	   (+1)();
+}
+
 extern "C" void kernelMain(void* multiboot_structure, unsigned int magicnum)
 {
     putText("hi team",15);
