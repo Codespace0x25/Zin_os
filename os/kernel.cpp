@@ -1,4 +1,3 @@
-#include <cstdio>
 
 /// @brief Output a colored text into the screen.
 /// @param text The string to print
@@ -16,6 +15,6 @@ extern "C" void putText(unsigned char* text, unsigned short color)
 
 extern "C" void kernelMain(void* multiboot_structure, unsigned int magicnum)
 {
-	printf("hi mom");
+    putText("hi team");
 	while(1);
 }
