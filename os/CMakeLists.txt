@@ -7,7 +7,7 @@ set(CMAKE_ASM_FLAGS "--32")
 file(GLOB SOURCES "*.cpp")
 file(GLOB ASM_SOURCES "*.s")
 
-add_executable(myKernel ${SOURCES} ${ASM_SOURCES})
+# Update the target name to zinKernel
+add_executable(zinKernel ${SOURCES} ${ASM_SOURCES})
 
-install(TARGETS myKernel DESTINATION ~/zin)
-
+install(TARGETS zinKernel DESTINATION ~/zin)
