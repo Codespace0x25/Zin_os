@@ -11,7 +11,6 @@
 .section .text
 
 .extern kernleMain
-.extern callConstructors
 .global loader
 
 loader:
