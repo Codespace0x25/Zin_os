@@ -10,7 +10,7 @@
 
 .section .text
 
-.extern kernelMain
+.extern main
 .extern callConstructors
 .global loader
 
@@ -21,7 +21,7 @@ loader:
     
     push %ax
     push %bx
-    call kernelMain
+    call main
 
 
 _stop:
