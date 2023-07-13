@@ -11,9 +11,12 @@ SECTIONS
 		*(.multiboot)
 		*(.text*)
 		*(.rodata)
-
 	}
 
+	.data :
+	{
+		*(.data)
+	}
 
 	.bss :
 	{
@@ -24,5 +27,5 @@ SECTIONS
 	{
 		*(.fini_array*)
 		*(.comment)
-
+	}
 }
