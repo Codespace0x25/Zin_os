@@ -1,19 +1,18 @@
 #!/bin/bash
 
-# check if cmake is installed
-[ -f /bin/cmake ] || {
-	echo "cmake not found"
-	exit
-}
+# Step 1: Create build directory
+mkdir -p build
+cd build || exit
 
-# cmake to generate build files
-cmake -S . -B build/
+# Step 2: Generate build files
+cmake -DCMAKE_CXX_FLAGS="-m32" -DCMAKE_ASM_FLAGS="--32" ..
 
-# build the files
-cmake --build build/
+# Step 3: Build the project
+make
 
-# install
-cmake --install build/ --prefix "~/zin"
+# Step 4: Install the executable
+make install
 
 # Step 5: Print completion message
-echo "Build process completed.\nBinary File in ~/zin"
+echo "Build process completed."
+
