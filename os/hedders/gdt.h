@@ -27,10 +27,9 @@
     SegmentDescriptor unusedSegmentselector;
     SegmentDescriptor codeSegmentselector;
     SegmentDescriptor dataSegmentselector;
-    
     public:
       GlobalDescriptorTable();
-      -GlobalDescriptorTable();
+      ~GlobalDescriptorTable();
       
       uint16_t CodeSegmentselector();
       uint16_t DataSegmentselector(); 
