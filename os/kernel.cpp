@@ -1,4 +1,5 @@
-#include "hedders/type.h"
+#include "./hedders/type.h"
+#include "..hedders/gdt.h"
 
 /// @brief Output a colored text into the screen.
 /// @param text The string to print
@@ -25,5 +26,10 @@ extern "C" void callConstructors(){
 extern "C" int main(int magicnum, char** multiboot_structure)
 {
     putText("hi team",15);
+    
+    
+    GlobalDescriptorTable gdt;
+    
+    
 	while(1);
 }
