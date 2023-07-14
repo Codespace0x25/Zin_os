@@ -1,4 +1,4 @@
-#include <type.h>
+#include <headers/type.h>
 
 /// @brief Output a colored text into the screen.
 /// @param text The string to print
