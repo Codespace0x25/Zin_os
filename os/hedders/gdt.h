@@ -1,7 +1,8 @@
+#include "type.h"
 #ifndef __GOT_N
 #define __GOT_N
 
-#include "type.h"
+
 
   class GlobalDescriptorTable
   {
