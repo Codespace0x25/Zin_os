@@ -1,5 +1,5 @@
-#ifndef __GOT_N
-#define __GOT_N
+#ifndef __GDT_N
+#define __GDT_N
 
 #include "type.h"
 
@@ -32,8 +32,8 @@
       GlobalDescriptorTable();
       -GlobalDescriptorTable();
       
-      uint16_t codeSegmentselector();
-      uint16_t dataSegmentselector(); 
+      uint16_t CodeSegmentselector();
+      uint16_t DataSegmentselector(); 
   };
 
 

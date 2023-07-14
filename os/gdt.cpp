@@ -1,10 +1,9 @@
-#include "hedders/type.h"
 #include "hedders/gdt.h"
 
 GlobalDescriptorTable::GlobalDescriptorTable()
 : nullSegmentselector(0,0,0),
 unusedSegmentselector(0,0,0),
-codeSegmentselector(0,64*1024*1024, 0x94),
+codeSegmentselector(0,64*1024*1024, 0x9A),
 dataSegmentselector(0,64*1024*1024, 0x92)
 {
   
@@ -12,17 +11,16 @@ dataSegmentselector(0,64*1024*1024, 0x92)
   i[0] = (uint32_t)this;
   i[1] = sizeof(GlobalDescriptorTable) << 16;
   
-  ase volatile("lgdt (%0)": :"p" (((uint8_t *) i)+2));
+  asm volatile("lgdt (%0)": :"p" (((uint8_t *) i)+2));
   
 }
 
 
 GlobalDescriptorTable::-GlobalDescriptorTable()
 {
-  
 }
 
-uint16_t GlobalDescriptorTable::BataSegmentselector()
+uint16_t GlobalDescriptorTable::DataSegmentselector()
 {
   return (uint8_t*)&dataSegmentselector - (uint8_t*)this;
 }
@@ -34,7 +32,7 @@ uint16_t GlobalDescriptorTable::CodeSegmentselector()
 GlobalDescriptorTable::Segmentselector::Segmentselector(uint32_t base, uint32_t limit, uint8_t flags)
 {
 
-  uint8_t target - (uint8_t*)this;
+  uint8_t target = (uint8_t*)this;
   
   if(limit <= 65536)
   {
@@ -47,10 +45,10 @@ GlobalDescriptorTable::Segmentselector::Segmentselector(uint32_t base, uint32_t 
       limit = (limit >>12)-1;
     }
     else
-    {
       limit = limit >> 12;
-      target[6] = 0xC0;
-     }
+      
+    target[6] = 0xC0;
+     
   }
   
   target[0] = limit & 0xFF
@@ -67,7 +65,7 @@ GlobalDescriptorTable::Segmentselector::Segmentselector(uint32_t base, uint32_t 
 
 uint32_t GlobalDescriptorTable::Segmentselector::Base()
 {
-  uint8_t target - (uint8_t*)this;
+  uint8_t target = (uint8_t*)this;
   uint32_t result = target[7];
   
   result = (result << 8) + target[4];
@@ -79,7 +77,7 @@ uint32_t GlobalDescriptorTable::Segmentselector::Base()
 }
 uint32_t GlobalDescriptorTable::Segmentselector::Limit()
 {
-  uint8_t target - (uint8_t*)this;
+  uint8_t target = (uint8_t*)this;
   uint32_t result = target[6] & 0xF;
   
   result = (result << 8) + target[1];
