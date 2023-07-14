@@ -9,4 +9,4 @@ file(GLOB ASM_SOURCES "*.s")
 
 add_executable(zinKernel ${SOURCES} ${ASM_SOURCES})
 
-install(TARGETS zinKernel DESTINATION ${HOME}/zin)
+install(TARGETS zinKernel DESTINATION ~/zin)
