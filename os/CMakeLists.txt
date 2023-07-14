@@ -7,9 +7,6 @@ set(CMAKE_ASM_FLAGS "--32")
 file(GLOB SOURCES "*.cpp")
 file(GLOB ASM_SOURCES "*.s")
 
-# Add gdt.cpp to the SOURCES list
-list(APPEND SOURCES "gdt.cpp")
-
 add_executable(zinKernel ${SOURCES} ${ASM_SOURCES})
 
 install(TARGETS zinKernel DESTINATION ${HOME}/zin)
