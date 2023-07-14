@@ -1,3 +1,4 @@
+#include <types.h>
 
 /// @brief Output a colored text into the screen.
 /// @param text The string to print
