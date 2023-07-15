@@ -1,5 +1,5 @@
 [ -f /bin/pacman ] && sudo pacman -Sy base-devel bison flex gmp libmpc mpfr texinfo
-[ -f /bin/apt ] && sudo apt install build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo
+[ -f /bin/apt ] && sudo apt-get install build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo
 
 # -- Setting up --
 export PREFIX="/usr/local/x86_64elfgcc"
