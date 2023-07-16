@@ -36,7 +36,7 @@ sudo make install-gcc
 echo "MAKE INSTALL-TARGET-LIBGCC:"
 sudo make install-target-libgcc
 echo "HERE U GO MAYBE:"
-[ -d "/usr/local/x86_64elfgcc/bin" ] && ls /usr/local/x86_64elfgcc/bin  || { echo "failed to install"; && exit; }
+[ -d /usr/local/x86_64elfgcc/bin ] && ls /usr/local/x86_64elfgcc/bin || { echo "failed to install" && exit; }
 
 if [ -f "$HOME/.zshrc" ]; then
 	echo "ZSH shell found"
