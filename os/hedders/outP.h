@@ -26,14 +26,14 @@
 /// @param color The color used (COLOR_XXX)
 inline void putText(const char* text)
 {
-  static uint16_t VideoMem =(uint16_t*)0x0b8000;
+  static uint16_t* VideoMem =(uint16_t*)0x0b8000;
   
   static uint8_t x=0 , y=0;
   
   for(int i = 0; text[i] != '\0'; ++i)
   {
   
-  switch(text)
+  switch(text[i])
   {
     case '\n':
       y++;
@@ -52,7 +52,7 @@ inline void putText(const char* text)
       if(y >= 25)
       {
         for(y=0; y<25;y++)
-          for(c=0;0<80;x++)
+          for(x=0;0<80;x++)
             VideoMem[80*y+x] = (VideoMem[80*y+x] & 0xFF00)|' ';
         x=0;
         y=0;

@@ -13,7 +13,7 @@ extern "C" void callConstructors(){
 extern "C" int main(int magicnum, char** multiboot_structure)
 {
     putText("hi team\n");
-    putText("how are you all.")
+    putText("how are you all.");
     
     
     GlobalDescriptorTable gdt;
