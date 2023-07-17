@@ -24,12 +24,40 @@
 /// @brief Output a colored text into the screen.
 /// @param text The string to print
 /// @param color The color used (COLOR_XXX)
-inline void putText(const char* text, unsigned short color)
+inline void putText(const char* text)
 {
-    unsigned short* video_mem = (unsigned short*)0xB8000;  // Video memory address where the text will be displayed
-    color = color << 8;  // Shift the color value to the appropriate position
-    for (int offset = 0; text[offset]; ++offset)  // Iterate through each character in the text
-        *video_mem++ = color | text[offset];  // Write the character and color to video memory
+  static uint16_t* VideoMem =(uint16_t*)0x0b8000;
+  
+  static uint8_t x=0 , y=0;
+  
+  for(int i = 0; text[i] != '\0'; ++i)
+  {
+  
+  switch(text[i])
+  {
+    case '\n':
+      y++;
+      x=0;
+      break;
+    default:
+      VideoMem[80*y+x] = (VideoMem[80*y+x] & 0xFF00) | text[i];
+      x++;
+  }
+    
+    if(x >= 80)
+    {
+      y++;
+      x=0;
+      }
+      if(y >= 25)
+      {
+        for(y=0; y<25;y++)
+          for(x=0;0<80;x++)
+            VideoMem[80*y+x] = (VideoMem[80*y+x] & 0xFF00)|' ';
+        x=0;
+        y=0;
+      }
+  }
 }
 
 #endif // OUTP_H
