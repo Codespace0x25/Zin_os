@@ -22,7 +22,7 @@ void Port8Bit::Write(uint8_t data)
 }
 uint8_t Port8Bit::Read()
 {
-    uint_t result;
+    uint8_t result;
     __asm__ volatile("inw %1, %0" : "=a" (result) : "Nd" (portnum));
     return result;
 }
@@ -41,7 +41,7 @@ vord Port16Bit::Write(uint16_t data)
 }
 uint16_t Port16Bit::Read()
 {
-    uint_t result;
+    uint16_t result;
     __asm__ volatile("inw %1, %0" : "=a" (result) : "Nd" (portnum));
     return result;
 }
@@ -61,7 +61,7 @@ vord Port32Bit::Write(uint32_t data)
 }
 uint32_t Port32Bit::Read()
 {
-    uint_t result;
+    uint32_t result;
     __asm__ volatile("inw %1, %0" : "=a" (result) : "Nd" (portnum));
     return result;
 }
