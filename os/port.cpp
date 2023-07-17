@@ -85,3 +85,4 @@ uint32_t Port32Bit::Read()
     __asm__ volatile("inl %1, %0" : "=a"(result) : "Nd"(portnum));
     return result;
 }
+
