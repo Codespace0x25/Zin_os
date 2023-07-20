@@ -4,6 +4,7 @@
 #include "port.h"
 #include "type.h"
 #include "gdt.h"
+#include "outP.h"
 
 class InterruptMan
 {
