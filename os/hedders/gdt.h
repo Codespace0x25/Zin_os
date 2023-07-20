@@ -1,5 +1,5 @@
-#ifndef __GDT_N
-#define __GDT_N
+#ifndef __GDT_H
+#define __GDT_H
 
 #include "type.h"
 
