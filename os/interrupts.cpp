@@ -1,21 +1,22 @@
-#include "./hedders/interrupts.h"
+#include "../hedders/interrupts.h"
+#include "../hedders/outP.h"
 
-// Define the static member here
+
 InterruptMan::GateDescriptor InterruptMan::interruptDescriptorTable[256];
 
 void InterruptMan::SetInterruptDescriptorTableEntry(
     uint8_t interruptNum,
     uint16_t gdt_codeSegmentorOffset,
-    void (*handle)(),
+    void (*handler)(),
     uint8_t DescriptorPrivilegeLevel,
     uint8_t DescriptorType
 )
 {
     const uint8_t IDT_DESC_PRESENT = 0x80;
 
-    interruptDescriptorTable[interruptNum].handlerAddressLowBits = ((uint32_t)handle) & 0xFFFF;
-    interruptDescriptorTable[interruptNum].handlerAddressHighBits = (((uint32_t)handle) >> 16) & 0xFFFF;
-    interruptDescriptorTable[interruptNum].gdt_codeSegmentSelector = gdt_codeSegmentorOffset; // Fix the assignment
+    interruptDescriptorTable[interruptNum].handlerAddressLowBits = (uint32_t)handler & 0xFFFF;
+    interruptDescriptorTable[interruptNum].handlerAddressHighBits = ((uint32_t)handler >> 16) & 0xFFFF;
+    interruptDescriptorTable[interruptNum].gdt_codeSegmentSelector = gdt_codeSegmentorOffset;
     interruptDescriptorTable[interruptNum].access = IDT_DESC_PRESENT | DescriptorType | ((DescriptorPrivilegeLevel & 3) << 5);
     interruptDescriptorTable[interruptNum].reserved = 0;
 }
@@ -52,8 +53,8 @@ InterruptMan::InterruptMan(GlobalDescriptorTable* gdt)
 
     InterruptDescriptorTablePointer idt;
     idt.size = 256 * sizeof(GateDescriptor) - 1;
-    idt.base = (uint32_t)interruptDescriptorTable; // Fix the variable name
-    asm volatile("lidt %0": :"m"(idt));
+    idt.base = (uint32_t)interruptDescriptorTable;
+    asm volatile("lidt %0" : : "m"(idt));
 }
 
 InterruptMan::~InterruptMan()
@@ -62,27 +63,24 @@ InterruptMan::~InterruptMan()
 
 void InterruptMan::Activate()
 {
-    asm("sti"); // Enable interrupts
+    asm("sti");
 }
 
 uint32_t InterruptMan::handleInterrupt(uint8_t interruptNum, uint32_t esp)
 {
+    // Your code to handle the interrupt goes here
     putText("Interrupt\n");
-    return esp; // Return the stack pointer as intended
+    return esp;
 }
 
-// Implement the rest of your interrupt handling functions here
 void InterruptMan::IgnoreInterruptRequest()
 {
-    // Do nothing or print a message indicating an ignored interrupt
 }
 
 void InterruptMan::HamdInterruptRequest0x00()
 {
-    // Handle interrupt 0x00
 }
 
 void InterruptMan::HamdInterruptRequest0x01()
 {
-    // Handle interrupt 0x01
 }
