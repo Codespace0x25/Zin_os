@@ -40,8 +40,8 @@ public:
 
     static uint32_t handleInterrupt(uint8_t interruptNum, uint32_t esp);
     static void IgnoreInterruptRequest();
-    static void HamdInterruptRequest0x00();
-    static void HamdInterruptRequest0x01();
+    static void HandleInterruptRequest0x00();
+    static void HandleInterruptRequest0x01();
 };
 
 #endif

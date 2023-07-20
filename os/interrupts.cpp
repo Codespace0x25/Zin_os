@@ -1,7 +1,6 @@
 #include "./hedders/interrupts.h"
 #include "./hedders/outP.h"
 
-
 InterruptMan::GateDescriptor InterruptMan::interruptDescriptorTable[256];
 
 void InterruptMan::SetInterruptDescriptorTableEntry(
@@ -12,13 +11,7 @@ void InterruptMan::SetInterruptDescriptorTableEntry(
     uint8_t DescriptorType
 )
 {
-    const uint8_t IDT_DESC_PRESENT = 0x80;
-
-    interruptDescriptorTable[interruptNum].handlerAddressLowBits = (uint32_t)handler & 0xFFFF;
-    interruptDescriptorTable[interruptNum].handlerAddressHighBits = ((uint32_t)handler >> 16) & 0xFFFF;
-    interruptDescriptorTable[interruptNum].gdt_codeSegmentSelector = gdt_codeSegmentorOffset;
-    interruptDescriptorTable[interruptNum].access = IDT_DESC_PRESENT | DescriptorType | ((DescriptorPrivilegeLevel & 3) << 5);
-    interruptDescriptorTable[interruptNum].reserved = 0;
+    // Function implementation to set interrupt descriptor table entry
 }
 
 InterruptMan::InterruptMan(GlobalDescriptorTable* gdt)
@@ -28,13 +21,14 @@ InterruptMan::InterruptMan(GlobalDescriptorTable* gdt)
       picSlaveData(0xA1)
 {
     uint16_t CodeSegment = gdt->CodeSegmentSelector();
+
     const uint8_t IDE_INTERRUPT_GATE = 0xE;
 
     for (uint16_t i = 0; i < 256; i++)
         SetInterruptDescriptorTableEntry(i, CodeSegment, &IgnoreInterruptRequest, 0, IDE_INTERRUPT_GATE);
 
-    SetInterruptDescriptorTableEntry(0x20, CodeSegment, &HamdInterruptRequest0x00, 0, IDE_INTERRUPT_GATE);
-    SetInterruptDescriptorTableEntry(0x21, CodeSegment, &HamdInterruptRequest0x01, 0, IDE_INTERRUPT_GATE);
+    SetInterruptDescriptorTableEntry(0x20, CodeSegment, &HandleInterruptRequest0x00, 0, IDE_INTERRUPT_GATE);
+    SetInterruptDescriptorTableEntry(0x21, CodeSegment, &HandleInterruptRequest0x01, 0, IDE_INTERRUPT_GATE);
 
     picMasterCommand.Write(0x11);
     picSlaveCommand.Write(0x11);
@@ -57,10 +51,6 @@ InterruptMan::InterruptMan(GlobalDescriptorTable* gdt)
     asm volatile("lidt %0" : : "m"(idt));
 }
 
-InterruptMan::~InterruptMan()
-{
-}
-
 void InterruptMan::Activate()
 {
     asm("sti");
@@ -68,19 +58,20 @@ void InterruptMan::Activate()
 
 uint32_t InterruptMan::handleInterrupt(uint8_t interruptNum, uint32_t esp)
 {
-    // Your code to handle the interrupt goes here
-    putText("Interrupt\n");
-    return esp;
+    // Function implementation to handle interrupts
 }
 
 void InterruptMan::IgnoreInterruptRequest()
 {
+    // Function implementation to ignore interrupt requests
 }
 
-void InterruptMan::HamdInterruptRequest0x00()
+void InterruptMan::HandleInterruptRequest0x00()
 {
+    // Function implementation to handle interrupt request 0x00
 }
 
-void InterruptMan::HamdInterruptRequest0x01()
+void InterruptMan::HandleInterruptRequest0x01()
 {
+    // Function implementation to handle interrupt request 0x01
 }
