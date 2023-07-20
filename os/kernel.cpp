@@ -1,7 +1,7 @@
 #include "./hedders/type.h"
 #include "./hedders/gdt.h"
 #include "./hedders/outP.h"
-#include "interrupts.h"
+#include "./hedder/interrupts.h"
 
 typedef void (*constructor)();
 extern "C" void callConstructors(){
