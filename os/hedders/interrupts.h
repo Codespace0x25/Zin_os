@@ -1,10 +1,10 @@
-#ifndef __INTERRUPTS_H
+##ifndef __INTERRUPTS_H
 #define __INTERRUPTS_H
 
 #include "port.h"
 #include "type.h"
 #include "gdt.h"
-#include "outP.h"
+#include "outP.h" // Include outP.h instead of stdio.h
 
 class InterruptMan
 {
@@ -19,6 +19,12 @@ protected:
     } __attribute__((packed));
 
     static GateDescriptor interruptDescriptorTable[256];
+
+    // Add member declarations for picMasterCommand, picMasterData, picSlaveCommand, and picSlaveData
+    Port8BitSlow picMasterCommand;
+    Port8BitSlow picMasterData;
+    Port8BitSlow picSlaveCommand;
+    Port8BitSlow picSlaveData;
 
 public:
     typedef struct
@@ -35,11 +41,6 @@ protected:
         uint8_t DescriptorPrivilegeLevel,
         uint8_t DescriptorType
     );
-
-    port8BitSlow picMasterCommand;
-    port8BitSlow picMasterData;
-    port8BitSlow picSlaveCommand;
-    port8BitSlow picSlaveData;
 
 public:
     InterruptMan(GlobalDescriptorTable* gdt);
