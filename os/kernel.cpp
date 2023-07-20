@@ -2,6 +2,7 @@
 #include "./hedders/gdt.h"
 #include "./hedders/outP.h"
 
+#include "./hedders/interrups.h"
 typedef void (*constructor)();
 extern "C" void callConstructors(){
 	        constructor* start_ctors;
@@ -17,6 +18,10 @@ extern "C" int main(int magicnum, char** multiboot_structure)
     
     
     GlobalDescriptorTable gdt;
+    InterruptMan interrups(%gdt);
+    
+    
+    interrups.Activate();
     
     
 	while(1);
