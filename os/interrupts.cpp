@@ -1,5 +1,5 @@
 #include "./hedders/interrupts.h"
-#include "./hedder/outP.h"
+#include "./hedders/outP.h"
 
 
 InterruptMan::GateDescriptor InterruptMan::interrupDescriptorTable[256]
