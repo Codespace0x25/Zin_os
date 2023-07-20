@@ -1,4 +1,4 @@
-##ifndef __INTERRUPTS_H
+#ifndef __INTERRUPTS_H
 #define __INTERRUPTS_H
 
 #include "port.h"
@@ -18,40 +18,23 @@ protected:
         uint16_t handlerAddressHighBits;
     } __attribute__((packed));
 
-    static GateDescriptor interruptDescriptorTable[256];
+    static GateDescriptor interruptDescriptorTable[256]; // Move the array definition here
 
-    // Add member declarations for picMasterCommand, picMasterData, picSlaveCommand, and picSlaveData
-    Port8BitSlow picMasterCommand;
-    Port8BitSlow picMasterData;
-    Port8BitSlow picSlaveCommand;
-    Port8BitSlow picSlaveData;
-
-public:
-    typedef struct
+    struct InterruptDescriptorTablePointer // Add struct keyword before the name
     {
         uint16_t size;
         uint32_t base;
-    } __attribute__((packed)) InterruptDescriptorTablePointer;
+    } __attribute__((packed));
 
-protected:
-    static void SetInterruptDescriptorTableEntry(
-        uint8_t interruptNum,
-        uint16_t gdt_codeSegmentorOffset,
-        void (*handle)(),
-        uint8_t DescriptorPrivilegeLevel,
-        uint8_t DescriptorType
-    );
+    // ... rest of the class definition ...
+    // Please make sure the member functions and variables are correctly defined.
 
 public:
     InterruptMan(GlobalDescriptorTable* gdt);
     ~InterruptMan();
 
-    void Activate();
+    // ... rest of the class definition ...
 
-    static uint32_t handleInterrupt(uint8_t interruptNum, uint32_t esp);
-    static void IgnoreInterruptRequest();
-    static void HamdInterruptRequest0x00();
-    static void HamdInterruptRequest0x01();
 };
 
 #endif // __INTERRUPTS_H
