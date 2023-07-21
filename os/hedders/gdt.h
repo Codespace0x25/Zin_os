@@ -31,8 +31,8 @@
       GlobalDescriptorTable();
       ~GlobalDescriptorTable();
       
-      uint16_t CodeSegmentselector();
-      uint16_t DataSegmentselector(); 
+      uint16_t CodeSegmentSelector();
+      uint16_t DataSegmentSelector(); 
   };
 
 
