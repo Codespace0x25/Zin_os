@@ -45,6 +45,12 @@ InterruptMan::InterruptMan(GlobalDescriptorTable* gdt)
     picMasterData.Write(0x00);
     picSlaveData.Write(0x00);
 
+    struct InterruptDescriptorTablePointer
+    {
+        uint16_t size;
+        uint32_t base;
+    } __attribute__((packed));
+
     InterruptDescriptorTablePointer idt;
     idt.size = 256 * sizeof(GateDescriptor) - 1;
     idt.base = (uint32_t)interruptDescriptorTable;
@@ -59,6 +65,8 @@ void InterruptMan::Activate()
 uint32_t InterruptMan::handleInterrupt(uint8_t interruptNum, uint32_t esp)
 {
     // Function implementation to handle interrupts
+    // Add a proper return statement here
+    return esp;
 }
 
 void InterruptMan::IgnoreInterruptRequest()
