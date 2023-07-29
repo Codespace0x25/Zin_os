@@ -10,7 +10,7 @@ GlobalDescriptorTable::GlobalDescriptorTable()
     i[0] = (uint32_t)this;
     i[1] = sizeof(GlobalDescriptorTable) << 16;
 
-    asm volatile("lgdt (%0)" : : "r"((uint32_t)i + 2));
+    __asm volatile("lgdt (%0)" : : "r"((uint32_t)i + 2));
 
 }
 
