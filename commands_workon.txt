@@ -1,6 +1,6 @@
 every one gets s one costlm command
 
--olivia:zinBot 
+-Trevor:zinBot 
 {
   zinBot a way ti lern how to use the commputer with zin_Os installed
 }
