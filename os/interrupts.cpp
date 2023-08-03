@@ -9,7 +9,7 @@ InterruptMan::InterruptMan(GlobalDescriptorTable* gdt)
       picSlaveCommand(0xA0),
       picSlaveData(0xA1)
 {
-    uint16_t CodeSegment = gdt->CodeSegmentSelector();
+    uint16_t CodeSegment = gdt->codeSegmentSelector();
 
     const uint8_t IDT_INTERRUPT_GATE = 0xE;
 
