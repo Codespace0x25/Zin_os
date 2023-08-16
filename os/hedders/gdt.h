@@ -32,7 +32,7 @@
       ~GlobalDescriptorTable();
       
       uint16_t codeSegmentSelector();
-      uint16_t DataSegmentSelector(); 
+      uint16_t dataSegmentSelector(); 
   };
 
 
