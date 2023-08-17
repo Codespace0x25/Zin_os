@@ -18,4 +18,11 @@ chmod a+x builder.sh && ./builder.sh
 
 ---
 
-Binary file will be in `~/zin`
+Binary file will be in
+```sh
+../iso
+```
+---
+
+
+
