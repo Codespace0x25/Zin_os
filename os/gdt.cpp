@@ -1,4 +1,5 @@
 #include "hedders/gdt.h"
+#include "./hedders/type.h"
 
 GlobalDescriptorTable::GlobalDescriptorTable()
     : nullSegmentselector(0, 0, 0),
