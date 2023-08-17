@@ -1,6 +1,0 @@
-every one gets s one costlm command
-
--Trevor:zinBot 
-{
-  zinBot a way ti lern how to use the commputer with zin_Os installed
-}
