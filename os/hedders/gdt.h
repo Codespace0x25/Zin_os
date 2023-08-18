@@ -26,7 +26,7 @@
     SegmentDescriptor nullSegmentselector;
     SegmentDescriptor unusedSegmentselector;
     SegmentDescriptor codeSegmentSelector;
-    SegmentDescriptor dataSegmentselector;
+    SegmentDescriptor dataSegmentSelector;
     public:
       GlobalDescriptorTable();
       ~GlobalDescriptorTable();
