@@ -26,12 +26,12 @@
     SegmentDescriptor nullSegmentselector;
     SegmentDescriptor unusedSegmentselector;
     SegmentDescriptor codeSegmentSelector;
-    SegmentDescriptor dataSegmentselector;
+    SegmentDescriptor dataSegmentSelector;
     public:
       GlobalDescriptorTable();
       ~GlobalDescriptorTable();
       
-      uint16_t codeSegmentSelector();
+      uint16_t CodeSegmentSelector();
       uint16_t DataSegmentSelector(); 
   };
 
