@@ -3,7 +3,7 @@
 GlobalDescriptorTable::GlobalDescriptorTable()
     : nullSegmentselector(0, 0, 0),
       unusedSegmentselector(0, 0, 0),
-      codeSegmentselector(0, 64 * 1024 * 1024, 0x9A),
+      codeSegmentSelector(0, 64 * 1024 * 1024, 0x9A),
       dataSegmentselector(0, 64 * 1024 * 1024, 0x92)
 {
     uint32_t i[2] = {0, 0};
