@@ -20,12 +20,12 @@ GlobalDescriptorTable::~GlobalDescriptorTable()
 
 uint16_t GlobalDescriptorTable::DataSegmentSelector()
 {
-    return (uint8_t *)&dataSegmentselector - (uint8_t *)this;
+    return (uint8_t *)&dataSegmentSelector - (uint8_t *)this;
 }
 
 uint16_t GlobalDescriptorTable::CodeSegmentSelector()
 {
-    return (uint8_t *)&codeSegmentselector - (uint8_t *)this;
+    return (uint8_t *)&codeSegmentSelector - (uint8_t *)this;
 }
 
 GlobalDescriptorTable::SegmentDescriptor::SegmentDescriptor(uint32_t base, uint32_t limit, uint8_t type)
